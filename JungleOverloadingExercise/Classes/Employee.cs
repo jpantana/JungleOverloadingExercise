@@ -38,8 +38,22 @@ namespace JungleOverloadingExercise.Classes
 
         public string Eat(string meal)
         {
-            Console.WriteLine($"{FirstName} is eating {meal}");
+            Console.WriteLine($"{FirstName} is eating a {meal}");
             return meal;
         }
+
+        public void Eat(List<Employee> companions, string meal)
+        {
+            Console.Write($"{FirstName} is out to lunch with "); 
+
+            foreach (var companion in companions)
+            {
+                string firstNameCompanion = companion.FirstName;
+                Console.Write($"{companion.FirstName}, and ");
+            }
+            Console.Write($" and eating {meal}");
+        }
+
+        
     }
 }

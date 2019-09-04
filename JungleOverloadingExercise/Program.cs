@@ -27,9 +27,23 @@ namespace JungleOverloadingExercise
             employee.RandomNumber(1, allRestaurants.Length);
 
             Console.WriteLine("What do you want to eat at that restaurant?");
-            var whatEmpWillEat = Console.ReadLine();
+            var whatEmployeeWillEat = Console.ReadLine();
 
-            employee.Eat(whatEmpWillEat);
+            employee.Eat(whatEmployeeWillEat);
+
+            List<Employee> companions = new List<Employee>();
+            Console.WriteLine("Type the first and last names of some people you work with.");
+            var myCoWorkers = Console.ReadLine();
+            string[] teammates = myCoWorkers.Split(", ");
+            foreach (var teammateName in teammates)
+            {
+                string[] firstLast = teammateName.Split(" ");
+                var newEmployee = new Employee(firstLast[0], firstLast[1]);
+                companions.Add(newEmployee);
+            }
+
+            employee.Eat(companions, whatEmployeeWillEat);
+
         }
     }
 }
